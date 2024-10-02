@@ -112,7 +112,7 @@ public class FrameComobox extends javax.swing.JFrame {
         }
         
         if (existe) {
-            
+            Modulos_Matriculados.addItem(Modulo);
         }
         
         
