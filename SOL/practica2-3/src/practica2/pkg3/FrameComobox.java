@@ -94,7 +94,7 @@ public class FrameComobox extends javax.swing.JFrame {
 
     private void Boton_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AñadirActionPerformed
         String Modulo = Modulo_a_Añadir.getText().trim();
-        
+        boolean existe = true;
         if (Modulo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena el campo.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -106,9 +106,13 @@ public class FrameComobox extends javax.swing.JFrame {
         }
         
         for (int i = 0; i < Modulos_Matriculados.getItemCount(); i++) {
-            if (!Modulo.equals((String) Modulos_Matriculados.getItemAt(i))) {
-                Modulos_Matriculados.addItem(Modulo);
+            if (Modulo.equals((String) Modulos_Matriculados.getItemAt(i))) {
+               existe = false;
             }
+        }
+        
+        if (existe) {
+            
         }
         
         
