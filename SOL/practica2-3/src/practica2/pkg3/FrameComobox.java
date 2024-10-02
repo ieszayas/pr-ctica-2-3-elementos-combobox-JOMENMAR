@@ -5,6 +5,7 @@
 package practica2.pkg3;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
@@ -17,6 +18,8 @@ public class FrameComobox extends javax.swing.JFrame {
     /**
      * Creates new form FrameComobox
      */
+    static ArrayList <String> Modulos_DAM1 = new ArrayList<String>(Arrays.asList("Bases de datos", "Entornos de desarrollo", "Formación y orientación laboral", "Lenguaje de marcas y sistemas de gestión de información", "Programación", "Sistemas informáticos"));
+    static ArrayList <String> Modulos_DAM2 = new ArrayList<String>(Arrays.asList("Acceso a datos", "Desarrollo de interfaces", "Empresa e iniciativa emprendedora", "Inglés técnico para grado superior", "Programación de servicios y procesos", "Programación multimedia y dispositivos móviles", "Sistemas de gestión empresarial", "Proyecto de desarrollo de aplicaciones multiplataforma", "Formación en centros de trabajo"));
     public FrameComobox() {
         initComponents();
         setLocationRelativeTo(null);
@@ -32,26 +35,45 @@ public class FrameComobox extends javax.swing.JFrame {
     private void initComponents() {
 
         Texto_Comunicativo = new javax.swing.JLabel();
-        Modulo_a_Añadir = new javax.swing.JTextField();
-        Boton_Añadir = new javax.swing.JButton();
+        Modulo_Añadir = new javax.swing.JTextField();
+        Añadir = new javax.swing.JButton();
         Modulos_Matriculados = new javax.swing.JComboBox<>();
+        Borrar_Todos = new javax.swing.JButton();
+        Añadir_Todos = new javax.swing.JButton();
+        Cursos = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         Texto_Comunicativo.setText("Añade el nombre de los módulos de los que estes matriculado");
 
-        Modulo_a_Añadir.addActionListener(new java.awt.event.ActionListener() {
+        Modulo_Añadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Modulo_a_AñadirActionPerformed(evt);
+                Modulo_AñadirActionPerformed(evt);
             }
         });
 
-        Boton_Añadir.setText("Añadir");
-        Boton_Añadir.addActionListener(new java.awt.event.ActionListener() {
+        Añadir.setText("Añadir");
+        Añadir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Boton_AñadirActionPerformed(evt);
+                AñadirActionPerformed(evt);
             }
         });
+
+        Borrar_Todos.setText("Borrar Todos");
+        Borrar_Todos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Borrar_TodosActionPerformed(evt);
+            }
+        });
+
+        Añadir_Todos.setText("Añadir Todos");
+        Añadir_Todos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                Añadir_TodosActionPerformed(evt);
+            }
+        });
+
+        Cursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DAM 1", "DAM 2" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -60,41 +82,58 @@ public class FrameComobox extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(Modulo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(Añadir)
+                        .addGap(194, 194, 194)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Boton_Añadir)
-                            .addComponent(Texto_Comunicativo))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(Modulo_a_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 94, Short.MAX_VALUE)
-                        .addComponent(Modulos_Matriculados, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(31, 31, 31))))
+                            .addComponent(Borrar_Todos)
+                            .addComponent(Añadir_Todos)
+                            .addComponent(Modulos_Matriculados, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(Texto_Comunicativo))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(41, 41, 41)
+                .addGap(49, 49, 49)
                 .addComponent(Texto_Comunicativo)
-                .addGap(47, 47, 47)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(Modulo_a_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Modulo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(Modulos_Matriculados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
-                .addComponent(Boton_Añadir)
-                .addContainerGap(69, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(Añadir)
+                    .addComponent(Añadir_Todos))
+                .addGap(18, 18, 18)
+                .addComponent(Borrar_Todos)
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Modulo_a_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modulo_a_AñadirActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Modulo_a_AñadirActionPerformed
-
-    private void Boton_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Boton_AñadirActionPerformed
-        String Modulo = Modulo_a_Añadir.getText().trim();
+    public boolean existe (String Modulo){
         boolean existe = true;
+        
+        for (int i = 0; i < Modulos_Matriculados.getItemCount(); i++) {
+            if (Modulo.equals((String) Modulos_Matriculados.getItemAt(i))) {
+               existe = false;
+            }
+        }
+        return existe;
+    }
+    private void Modulo_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modulo_AñadirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_Modulo_AñadirActionPerformed
+
+    private void AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirActionPerformed
+        String Modulo = Modulo_Añadir.getText().trim();
+        
         if (Modulo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena el campo.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -105,19 +144,29 @@ public class FrameComobox extends javax.swing.JFrame {
             return;
         }
         
-        for (int i = 0; i < Modulos_Matriculados.getItemCount(); i++) {
-            if (Modulo.equals((String) Modulos_Matriculados.getItemAt(i))) {
-               existe = false;
-            }
-        }
-        
-        if (existe) {
+        if (existe(Modulo)) {
             Modulos_Matriculados.addItem(Modulo);
         }
         
         
         
-    }//GEN-LAST:event_Boton_AñadirActionPerformed
+    }//GEN-LAST:event_AñadirActionPerformed
+
+    private void Borrar_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar_TodosActionPerformed
+        int cont = Modulos_Matriculados.getItemCount();
+        for (int i = 0; i < cont; i++) {
+            Modulos_Matriculados.removeItemAt(0);
+        }
+    }//GEN-LAST:event_Borrar_TodosActionPerformed
+
+    private void Añadir_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Añadir_TodosActionPerformed
+        String Modulo = Cursos.getSelectedItem();
+        
+        if () {
+            
+        }
+        
+    }//GEN-LAST:event_Añadir_TodosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -155,8 +204,11 @@ public class FrameComobox extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Boton_Añadir;
-    private javax.swing.JTextField Modulo_a_Añadir;
+    private javax.swing.JButton Añadir;
+    private javax.swing.JButton Añadir_Todos;
+    private javax.swing.JButton Borrar_Todos;
+    private javax.swing.JComboBox<String> Cursos;
+    private javax.swing.JTextField Modulo_Añadir;
     private javax.swing.JComboBox<String> Modulos_Matriculados;
     private javax.swing.JLabel Texto_Comunicativo;
     // End of variables declaration//GEN-END:variables
