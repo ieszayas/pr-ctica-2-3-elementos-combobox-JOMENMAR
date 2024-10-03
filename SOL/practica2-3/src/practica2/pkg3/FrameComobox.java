@@ -7,7 +7,10 @@ package practica2.pkg3;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.JComboBox;
+import javax.swing.JDialog;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -29,6 +32,13 @@ public class FrameComobox extends javax.swing.JFrame {
     public FrameComobox() {
         initComponents();
         setLocationRelativeTo(null);
+
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+            System.out.println("booooooooooooooooooooooooo");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     /**
