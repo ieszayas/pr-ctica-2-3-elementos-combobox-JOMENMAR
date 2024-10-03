@@ -18,8 +18,9 @@ public class FrameComobox extends javax.swing.JFrame {
     /**
      * Creates new form FrameComobox
      */
-    static ArrayList <String> Modulos_DAM1 = new ArrayList<String>(Arrays.asList("Bases de datos", "Entornos de desarrollo", "Formación y orientación laboral", "Lenguaje de marcas y sistemas de gestión de información", "Programación", "Sistemas informáticos"));
-    static ArrayList <String> Modulos_DAM2 = new ArrayList<String>(Arrays.asList("Acceso a datos", "Desarrollo de interfaces", "Empresa e iniciativa emprendedora", "Inglés técnico para grado superior", "Programación de servicios y procesos", "Programación multimedia y dispositivos móviles", "Sistemas de gestión empresarial", "Proyecto de desarrollo de aplicaciones multiplataforma", "Formación en centros de trabajo"));
+    private enum dam1 {Bases, Entornos, FOL, Lenguaje, Programación, Sistemas};
+    private enum dam2 {Acceso, Interfaces, Empresas, Ingles, Procesos, Android, Gestion, Proyecto, Practicas}
+        
     public FrameComobox() {
         initComponents();
         setLocationRelativeTo(null);
@@ -117,7 +118,7 @@ public class FrameComobox extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public boolean existe (String Modulo){
+    public void existe (String Modulo){
         boolean existe = true;
         
         for (int i = 0; i < Modulos_Matriculados.getItemCount(); i++) {
@@ -125,8 +126,15 @@ public class FrameComobox extends javax.swing.JFrame {
                existe = false;
             }
         }
-        return existe;
+        if (existe) {
+            Añadir(Modulo);
+        }
     }
+    
+    public void Añadir(String Modulo){
+        Modulos_Matriculados.addItem(Modulo);
+    }
+    
     private void Modulo_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modulo_AñadirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Modulo_AñadirActionPerformed
@@ -140,13 +148,12 @@ public class FrameComobox extends javax.swing.JFrame {
         }
         
         if (Modulos_Matriculados.getItemCount() == 0) {
-            Modulos_Matriculados.addItem(Modulo);
+            Añadir(Modulo);
             return;
         }
         
-        if (existe(Modulo)) {
-            Modulos_Matriculados.addItem(Modulo);
-        }
+        existe(Modulo);
+
         
         
         
@@ -160,10 +167,19 @@ public class FrameComobox extends javax.swing.JFrame {
     }//GEN-LAST:event_Borrar_TodosActionPerformed
 
     private void Añadir_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Añadir_TodosActionPerformed
-        String Modulo = Cursos.getSelectedItem();
-        
-        if () {
-            
+        String Modulo = Cursos.getSelectedItem().toString();
+        System.out.println(Modulo);
+        if (Modulo.equals("DAM 1")) {
+            for (dam1 modulo : dam1.values()) {
+                existe(modulo.toString());
+                 
+            }
+        }
+        if (Modulo.equals("DAM 2")) {
+            for (dam2 modulo : dam2.values()) {
+                existe(modulo.toString());
+                 
+            }
         }
         
     }//GEN-LAST:event_Añadir_TodosActionPerformed
