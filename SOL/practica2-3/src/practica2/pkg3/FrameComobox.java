@@ -23,7 +23,7 @@ public class FrameComobox extends javax.swing.JFrame {
      */
     private enum dam1 {
         Bases, Entornos, FOL, Lenguaje, Programación, Sistemas
-    };
+    }
 
     private enum dam2 {
         Acceso, Interfaces, Empresas, Ingles, Procesos, Android, Gestion, Proyecto, Practicas
@@ -155,12 +155,8 @@ public class FrameComobox extends javax.swing.JFrame {
             }
         }
         if (existe) {
-            Añadir(Modulo);
+            Modulos_Matriculados.addItem(Modulo);
         }
-    }
-
-    public void Añadir(String Modulo) {
-        Modulos_Matriculados.addItem(Modulo);
     }
 
     private void Modulo_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modulo_AñadirActionPerformed
@@ -176,7 +172,7 @@ public class FrameComobox extends javax.swing.JFrame {
         }
 
         if (Modulos_Matriculados.getItemCount() == 0) {
-            Añadir(Modulo);
+            existe(Modulo);
             return;
         }
 
@@ -193,7 +189,7 @@ public class FrameComobox extends javax.swing.JFrame {
     }//GEN-LAST:event_Borrar_TodosActionPerformed
 
     private void Añadir_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Añadir_TodosActionPerformed
-        String Modulo = Cursos.getSelectedItem().toString();
+        String Modulo = Cursos.getSelectedItem().toString().trim();
         System.out.println(Modulo);
         if (Modulo.equals("DAM 1")) {
             for (dam1 modulo : dam1.values()) {
