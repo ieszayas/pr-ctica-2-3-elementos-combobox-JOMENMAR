@@ -33,13 +33,17 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="Borrar_Todos" min="-2" max="-2" attributes="0"/>
                           <Component id="Añadir_Todos" min="-2" max="-2" attributes="0"/>
-                          <Component id="Modulos_Matriculados" alignment="0" min="-2" pref="204" max="-2" attributes="0"/>
                           <Component id="Cursos" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="Modulos_Matriculados" min="-2" pref="179" max="-2" attributes="0"/>
+                              <EmptySpace type="separate" max="-2" attributes="0"/>
+                              <Component id="Borrar" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <Component id="Texto_Comunicativo" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="31" max="32767" attributes="0"/>
+              <EmptySpace pref="20" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,15 +58,16 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Modulo_Añadir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Modulos_Matriculados" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="Borrar" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="Añadir" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="Añadir_Todos" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="Borrar_Todos" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="28" max="32767" attributes="0"/>
+              <EmptySpace pref="19" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -124,6 +129,16 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
+    </Component>
+    <Component class="javax.swing.JButton" name="Borrar">
+      <Properties>
+        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+          <Image iconType="3" name="/media/trash.png"/>
+        </Property>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BorrarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

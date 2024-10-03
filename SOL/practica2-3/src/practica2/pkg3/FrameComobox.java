@@ -18,9 +18,14 @@ public class FrameComobox extends javax.swing.JFrame {
     /**
      * Creates new form FrameComobox
      */
-    private enum dam1 {Bases, Entornos, FOL, Lenguaje, Programación, Sistemas};
-    private enum dam2 {Acceso, Interfaces, Empresas, Ingles, Procesos, Android, Gestion, Proyecto, Practicas}
-        
+    private enum dam1 {
+        Bases, Entornos, FOL, Lenguaje, Programación, Sistemas
+    };
+
+    private enum dam2 {
+        Acceso, Interfaces, Empresas, Ingles, Procesos, Android, Gestion, Proyecto, Practicas
+    }
+
     public FrameComobox() {
         initComponents();
         setLocationRelativeTo(null);
@@ -42,6 +47,7 @@ public class FrameComobox extends javax.swing.JFrame {
         Borrar_Todos = new javax.swing.JButton();
         Añadir_Todos = new javax.swing.JButton();
         Cursos = new javax.swing.JComboBox<>();
+        Borrar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -76,6 +82,13 @@ public class FrameComobox extends javax.swing.JFrame {
 
         Cursos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DAM 1", "DAM 2" }));
 
+        Borrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/media/trash.png"))); // NOI18N
+        Borrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BorrarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -90,10 +103,13 @@ public class FrameComobox extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(Borrar_Todos)
                             .addComponent(Añadir_Todos)
-                            .addComponent(Modulos_Matriculados, javax.swing.GroupLayout.PREFERRED_SIZE, 204, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(Cursos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(Modulos_Matriculados, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(Borrar))))
                     .addComponent(Texto_Comunicativo))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -105,58 +121,57 @@ public class FrameComobox extends javax.swing.JFrame {
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Modulo_Añadir, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(Modulos_Matriculados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(33, 33, 33)
+                    .addComponent(Modulos_Matriculados, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(Borrar))
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(Añadir)
                     .addComponent(Añadir_Todos))
                 .addGap(18, 18, 18)
                 .addComponent(Borrar_Todos)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public void existe (String Modulo){
+    public void existe(String Modulo) {
         boolean existe = true;
-        
+
         for (int i = 0; i < Modulos_Matriculados.getItemCount(); i++) {
             if (Modulo.equals((String) Modulos_Matriculados.getItemAt(i))) {
-               existe = false;
+                existe = false;
             }
         }
         if (existe) {
             Añadir(Modulo);
         }
     }
-    
-    public void Añadir(String Modulo){
+
+    public void Añadir(String Modulo) {
         Modulos_Matriculados.addItem(Modulo);
     }
-    
+
     private void Modulo_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modulo_AñadirActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_Modulo_AñadirActionPerformed
 
     private void AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AñadirActionPerformed
         String Modulo = Modulo_Añadir.getText().trim();
-        
+
         if (Modulo.isEmpty()) {
             JOptionPane.showMessageDialog(this, "Por favor, rellena el campo.", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        
+
         if (Modulos_Matriculados.getItemCount() == 0) {
             Añadir(Modulo);
             return;
         }
-        
+
         existe(Modulo);
 
-        
-        
-        
+
     }//GEN-LAST:event_AñadirActionPerformed
 
     private void Borrar_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar_TodosActionPerformed
@@ -172,17 +187,23 @@ public class FrameComobox extends javax.swing.JFrame {
         if (Modulo.equals("DAM 1")) {
             for (dam1 modulo : dam1.values()) {
                 existe(modulo.toString());
-                 
+
             }
         }
         if (Modulo.equals("DAM 2")) {
             for (dam2 modulo : dam2.values()) {
                 existe(modulo.toString());
-                 
+
             }
         }
-        
+
     }//GEN-LAST:event_Añadir_TodosActionPerformed
+
+    private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
+
+        Modulos_Matriculados.removeItem(Modulos_Matriculados.getSelectedItem());
+
+    }//GEN-LAST:event_BorrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -222,6 +243,7 @@ public class FrameComobox extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Añadir;
     private javax.swing.JButton Añadir_Todos;
+    private javax.swing.JButton Borrar;
     private javax.swing.JButton Borrar_Todos;
     private javax.swing.JComboBox<String> Cursos;
     private javax.swing.JTextField Modulo_Añadir;
