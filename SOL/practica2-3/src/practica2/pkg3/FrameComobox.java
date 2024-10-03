@@ -183,6 +183,12 @@ public class FrameComobox extends javax.swing.JFrame {
 
     private void Borrar_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar_TodosActionPerformed
         int cont = Modulos_Matriculados.getItemCount();
+        
+        if (Modulos_Matriculados.getItemCount() == 0) {
+            JOptionPane.showMessageDialog(this, "No hay modulos por borrar", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         for (int i = 0; i < cont; i++) {
             Modulos_Matriculados.removeItemAt(0);
         }
@@ -207,7 +213,12 @@ public class FrameComobox extends javax.swing.JFrame {
     }//GEN-LAST:event_Añadir_TodosActionPerformed
 
     private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
-
+        
+        if (Modulos_Matriculados.getItemCount() == 0) {
+            JOptionPane.showMessageDialog(this, "No hay modulos por borrar", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
         Modulos_Matriculados.removeItem(Modulos_Matriculados.getSelectedItem());
 
     }//GEN-LAST:event_BorrarActionPerformed
@@ -241,6 +252,7 @@ public class FrameComobox extends javax.swing.JFrame {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new FrameComobox().setVisible(true);
             }
