@@ -35,7 +35,7 @@ public class FrameComobox extends javax.swing.JFrame {
 
         try {
             UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-            System.out.println("booooooooooooooooooooooooo");
+            System.out.println("Look and Feel en funcionamiento");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -148,15 +148,28 @@ public class FrameComobox extends javax.swing.JFrame {
 
     public void existe(String Modulo) {
         boolean existe = true;
-
+        System.out.println(Modulo);
         for (int i = 0; i < Modulos_Matriculados.getItemCount(); i++) {
             if (Modulo.equals((String) Modulos_Matriculados.getItemAt(i))) {
                 existe = false;
             }
         }
+
         if (existe) {
-            Modulos_Matriculados.addItem(Modulo);
+            Modulos_Matriculados.addItem(curso(Modulo));
         }
+
+    }
+
+    public String curso(String Modulo) {
+        if (Cursos.getSelectedItem().toString().equals("DAM 1")) {
+            Modulo = "DAM_1." + Modulo;
+            return Modulo;
+        }
+
+        Modulo = "DAM_2." + Modulo;
+        return Modulo;
+
     }
 
     private void Modulo_AñadirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Modulo_AñadirActionPerformed
@@ -176,6 +189,11 @@ public class FrameComobox extends javax.swing.JFrame {
             return;
         }
 
+        if (Modulos_Matriculados.getItemCount() == 0) {
+            existe(Modulo);
+            return;
+        }
+
         existe(Modulo);
 
 
@@ -183,19 +201,19 @@ public class FrameComobox extends javax.swing.JFrame {
 
     private void Borrar_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Borrar_TodosActionPerformed
         int cont = Modulos_Matriculados.getItemCount();
-        
+
         if (Modulos_Matriculados.getItemCount() == 0) {
             JOptionPane.showMessageDialog(this, "No hay modulos por borrar", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         for (int i = 0; i < cont; i++) {
             Modulos_Matriculados.removeItemAt(0);
         }
     }//GEN-LAST:event_Borrar_TodosActionPerformed
 
     private void Añadir_TodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Añadir_TodosActionPerformed
-        String Modulo = Cursos.getSelectedItem().toString().trim();
+        String Modulo = Cursos.getSelectedItem().toString();
         System.out.println(Modulo);
         if (Modulo.equals("DAM 1")) {
             for (dam1 modulo : dam1.values()) {
@@ -213,12 +231,12 @@ public class FrameComobox extends javax.swing.JFrame {
     }//GEN-LAST:event_Añadir_TodosActionPerformed
 
     private void BorrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BorrarActionPerformed
-        
+
         if (Modulos_Matriculados.getItemCount() == 0) {
             JOptionPane.showMessageDialog(this, "No hay modulos por borrar", "Error", JOptionPane.WARNING_MESSAGE);
             return;
         }
-        
+
         Modulos_Matriculados.removeItem(Modulos_Matriculados.getSelectedItem());
 
     }//GEN-LAST:event_BorrarActionPerformed
