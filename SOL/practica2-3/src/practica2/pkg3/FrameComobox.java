@@ -140,17 +140,18 @@ public class FrameComobox extends javax.swing.JFrame {
                     .addComponent(Añadir_Todos))
                 .addGap(18, 18, 18)
                 .addComponent(Borrar_Todos)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     public void existe(String Modulo) {
+       
         boolean existe = true;
         System.out.println(Modulo);
         for (int i = 0; i < Modulos_Matriculados.getItemCount(); i++) {
-            if (Modulo.equals((String) Modulos_Matriculados.getItemAt(i))) {
+            if (("DAM_1." + Modulo).equals((String) Modulos_Matriculados.getItemAt(i)) || ("DAM_2." + Modulo).equals((String) Modulos_Matriculados.getItemAt(i))) {
                 existe = false;
             }
         }
@@ -167,8 +168,12 @@ public class FrameComobox extends javax.swing.JFrame {
             return Modulo;
         }
 
-        Modulo = "DAM_2." + Modulo;
-        return Modulo;
+        if (Cursos.getSelectedItem().toString().equals("DAM 1")) {
+            Modulo = "DAM_2." + Modulo;
+            return Modulo;
+        }
+        
+        return "Fallo";
 
     }
 
